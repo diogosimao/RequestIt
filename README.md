@@ -1,12 +1,12 @@
 # RequestIt
 
-##Requirements
+## Requirements
 
 ```
 PM> Install-Package EntityFramework -Version 6.1.3
 ```
 
-##Requirements (outros)
+## Requirements (outros)
 
 Necessário em casos que a versão do Visual Studio não inclui os controles Reporting
 
@@ -15,7 +15,7 @@ PM> Install-Package Microsoft.ReportViewer.Common
 PM> Install-Package Microsoft.ReportViewer.WinForms
 ```
 
-##Database setup
+## Database setup
 
 Instruções para sua criação do banco de dados no ambiente do cliente final
 
