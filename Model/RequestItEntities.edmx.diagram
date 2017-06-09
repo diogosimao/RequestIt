@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ecd15a9e8f424f04909768bd06f70f14" Name="Diagram1">
+        <EntityTypeShape EntityType="RequestItModel.CompoundProduct" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RequestItModel.Product" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RequestItModel.Request" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RequestItModel.RequestsItem" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="RequestItModel.FK_CompoundProducts_Compounds" ManuallyRouted="false" />
+        <AssociationConnector Association="RequestItModel.FK_CompoundProducts_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="RequestItModel.FK_RequestsItems_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="RequestItModel.FK_RequestsItems_Requests" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
