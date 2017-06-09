@@ -25,10 +25,25 @@ namespace Model
         {
             using (RequestItEntities db = new RequestItEntities())
             {
-                RequestsItem requestItem = (from p in db.RequestsItems
-                                            where p.id == obj.id
-                                            select p).FirstOrDefault();
+                RequestsItem requestItem = (from ri in db.RequestsItems
+                                            where ri.id == obj.id
+                                            select ri).FirstOrDefault();
                 db.RequestsItems.Remove(requestItem);
+                return (db.SaveChanges() > 0);
+            }
+        }
+
+        public bool DeleteByRequestId(int requestId)
+        {
+            using (RequestItEntities db = new RequestItEntities())
+            {
+                List<RequestsItem> requestItems = (from ri in db.RequestsItems
+                                                  where ri.requestId == requestId
+                                                  select ri).ToList();
+                foreach (RequestsItem requestItem in requestItems)
+                {
+                    db.RequestsItems.Remove(requestItem);
+                }
                 return (db.SaveChanges() > 0);
             }
         }
@@ -69,6 +84,16 @@ namespace Model
                 var request = (from ri in db.RequestsItems
                                where ri.requestId == requestId 
                                select ri).ToList();
+                return request;
+            }
+        }
+        public RequestsItem SearchProductItemOfRequestItem(int productId)
+        {
+            using (RequestItEntities db = new RequestItEntities())
+            {
+                var request = (from ri in db.RequestsItems
+                               where ri.productId == productId
+                               select ri).FirstOrDefault();
                 return request;
             }
         }

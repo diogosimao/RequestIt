@@ -109,7 +109,21 @@ namespace RequestIt
 
         public virtual void btnDelete_Click(object sender, EventArgs e)
         {
-            Delete();
+            if (Delete())
+            {
+                sStatus = statusRegister.scBrowser;
+                enableDisableControls(false);
+                cleanControls();
+                MessageBox.Show("Registro excluido com sucesso!",
+                    "Delete", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao delete o registro",
+                    "Delete", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
         }
 
         public bool decimalOnly(object sender, KeyPressEventArgs e)

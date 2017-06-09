@@ -69,6 +69,24 @@ namespace RequestIt
             SearchAll();
         }
 
+        public override bool Delete()
+        {
+            try
+            {
+                Request request = new Request();
+                request.id = Convert.ToInt32(lblId.Text);
+                if (objRequestsItem.DeleteByRequestId(request.id) == true)
+                    return objRequests.Delete(request);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK,
+                  MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         public override bool Save()
         {
             Request request = new Request();

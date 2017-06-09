@@ -10,6 +10,7 @@ namespace RequestIt
     {
         balProducts objProduct = new balProducts();
         balCompoundProducts objCompoundProduct = new balCompoundProducts();
+        balRequestsItems objRequestItem = new balRequestsItems();
         List<int> compoundProductIdOriginalList = new List<int>();
         List<int> compoundProductIdNewList = new List<int>();
 
@@ -93,7 +94,15 @@ namespace RequestIt
             {
                 Product product = new Product();
                 product.id = Convert.ToInt32(lblId.Text);
-                return objProduct.Delete(product);
+                if (objCompoundProduct.SearchProductItemOfCompoundProduct(product.id) == null &&
+                    objRequestItem.SearchProductItemOfRequestItem(product.id) == null)
+                    return objProduct.Delete(product);
+                else
+                {
+                    MessageBox.Show("O produto faz parte de um produto composto ou de uma requisição. " +
+                        "\nNão é possível exclui-lo", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -139,7 +148,6 @@ namespace RequestIt
                 lblId.Text = product.id.ToString();
                 txtProductName.Text = product.name.ToString();
                 txtSalePrice.Text = product.salePrice.ToString();
-                txtCostPrice.Text = product.costPrice.ToString();
                 chkBoxCompoundProduct.Checked = (product.isCompound == true ? true : false);
                 listView2.Items.Clear();
                 decimal costPrice = 0;
@@ -155,7 +163,15 @@ namespace RequestIt
                     compoundProductIdOriginalList.Add(cp.productId);
                     costPrice += (subProduct.costPrice * i.quantity);
                 }
-                txtCostPrice.Text = String.Format("{0}", costPrice);
+                if (product.isCompound == true)
+                {
+                    txtCostPrice.Text = String.Format("{0}", costPrice);
+                }
+                else
+                {
+                    txtCostPrice.Text = product.costPrice.ToString();
+                }
+                
                 sStatus = statusRegister.scEdit;
                 enableDisableControls(true);
             }

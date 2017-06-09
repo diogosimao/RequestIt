@@ -57,6 +57,17 @@ namespace Model
             }
         }
 
+        public CompoundProduct SearchProductItemOfCompoundProduct(int productId)
+        {
+            using (RequestItEntities db = new RequestItEntities())
+            {
+                var piocp = (from cp in db.CompoundProducts
+                             where (cp.productId == productId)
+                             select cp).FirstOrDefault();
+                return piocp;
+            }
+        }
+
         public override List<CompoundProduct> SearchAll()
         {
             using (RequestItEntities db = new RequestItEntities())

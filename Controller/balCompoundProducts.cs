@@ -33,6 +33,10 @@ namespace Controller
         {
             return compoundProduct.SearchCompound(productId, compoundProductId);
         }
+        public CompoundProduct SearchProductItemOfCompoundProduct(int productId)
+        {
+            return compoundProduct.SearchProductItemOfCompoundProduct(productId);
+        }
         public List<CompoundProduct> SearchAll()
         {
             return compoundProduct.SearchAll();

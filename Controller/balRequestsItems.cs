@@ -1,5 +1,5 @@
-﻿using Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Model;
 
 namespace Controller
 {
@@ -19,6 +19,10 @@ namespace Controller
         {
             return requestItem.Delete(obj);
         }
+        public bool DeleteByRequestId(int requestId)
+        {
+            return requestItem.DeleteByRequestId(requestId);
+        }
         public RequestsItem Search(int id)
         {
             return requestItem.Search(id);
@@ -34,6 +38,10 @@ namespace Controller
         public List<RequestsItem> SearchByRequestId(int requestId)
         {
             return requestItem.SearchByRequestId(requestId);
+        }
+        public RequestsItem SearchProductItemOfRequestItem(int productId)
+        {
+            return requestItem.SearchProductItemOfRequestItem(productId);
         }
     }
 }
